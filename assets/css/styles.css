@@ -1,0 +1,46 @@
+/* ============================================
+   ALKE WALLET - Estilos básicos
+   ============================================ */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Tarjetas con bordes redondeados */
+.card {
+    border-radius: 15px;
+}
+
+/* Botones más grandes */
+.btn-lg {
+    font-size: 16px;
+    padding: 12px;
+}
+
+/* Animación suave al cargar */
+.card {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll personalizado */
+#transactionsList::-webkit-scrollbar,
+#contactList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#transactionsList::-webkit-scrollbar-thumb,
+#contactList::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
