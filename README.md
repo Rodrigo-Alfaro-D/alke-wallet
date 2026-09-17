@@ -1,6 +1,6 @@
 # 💰 Alke Wallet
 
-![Logo](assets/images/logo.png)
+![Logo](assets/images/logo.jpg)
 
 ## 📌 Descripción
 
