@@ -1,6 +1,6 @@
 /**
  * deposit.js - Funcionalidad del depósito
- * Usando jQuery
+ * ⚠️ IMPORTANTE: Guarda en localStorage con las mismas claves que transactions.js lee
  */
 
 $(document).ready(function() {
@@ -15,10 +15,10 @@ $(document).ready(function() {
     let saldo = parseFloat(localStorage.getItem('walletBalance')) || 5250.00;
     $('#currentBalance').text('$' + saldo.toFixed(2));
 
-    // Enfocar el campo
+    // Enfocar campo
     $('#amount').focus();
 
-    // Evento: Submit del formulario
+    // Submit del formulario
     $('#depositForm').on('submit', function(event) {
         event.preventDefault();
 
@@ -31,21 +31,28 @@ $(document).ready(function() {
             return;
         }
 
-        // Actualizar saldo
+        // ============================================
+        // ACTUALIZAR SALDO
+        // ============================================
         const nuevoSaldo = saldo + monto;
         localStorage.setItem('walletBalance', nuevoSaldo.toString());
         saldo = nuevoSaldo;
         $('#currentBalance').text('$' + nuevoSaldo.toFixed(2));
 
-        // Registrar transacción
+        // ============================================
+        // REGISTRAR TRANSACCIÓN
+        // ⚠️ IMPORTANTE: usar la misma clave 'transactions'
+        // ============================================
         let transacciones = JSON.parse(localStorage.getItem('transactions')) || [];
+        
         transacciones.unshift({
-            type: 'deposit',
-            amount: monto,
-            from: 'Depósito',
-            date: new Date().toLocaleString(),
-            status: 'completado'
+            type: 'deposit',                          // ← Tipo
+            amount: monto,                            // ← Monto
+            from: 'Depósito en efectivo',             // ← Origen
+            date: new Date().toLocaleString(),        // ← Fecha
+            status: 'completado'                      // ← Estado
         });
+        
         localStorage.setItem('transactions', JSON.stringify(transacciones));
 
         // Mostrar éxito

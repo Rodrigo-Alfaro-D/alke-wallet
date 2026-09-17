@@ -4,10 +4,9 @@
  */
 
 $(document).ready(function() {
-
     // Verificar sesión
     if (!localStorage.getItem('isLoggedIn')) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
 
@@ -29,28 +28,25 @@ $(document).ready(function() {
         }, 1500);
     }
 
-    // Evento: Botón Depositar
+    // Eventos de botones
     $('#btnDeposit').on('click', function() {
         redirigir('deposit.html', 'Depósito');
     });
 
-    // Evento: Botón Enviar Dinero
     $('#btnSendMoney').on('click', function() {
         redirigir('sendmoney.html', 'Enviar Dinero');
     });
 
-    // Evento: Botón Últimos Movimientos
     $('#btnTransactions').on('click', function() {
         redirigir('transactions.html', 'Últimos Movimientos');
     });
 
-    // Evento: Cerrar Sesión
+    // Cerrar sesión
     $('#btnLogout').on('click', function() {
         if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
             localStorage.removeItem('isLoggedIn');
             localStorage.removeItem('userEmail');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         }
     });
-
 });

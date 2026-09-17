@@ -1,23 +1,59 @@
 /* ============================================
-   ALKE WALLET - Estilos básicos
+   ALKE WALLET - Estilos personalizados
+   Compatible con Bootstrap 4.6.2
    ============================================ */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f9fa;
 }
 
-/* Tarjetas con bordes redondeados */
+/* Tarjetas */
 .card {
-    border-radius: 15px;
+    border-radius: 15px !important;
+    border: none;
 }
 
-/* Botones más grandes */
-.btn-lg {
-    font-size: 16px;
-    padding: 12px;
+/* Botones */
+.btn {
+    border-radius: 8px;
 }
 
-/* Animación suave al cargar */
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Saldo */
+#balanceDisplay,
+#currentBalance {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Lista de transacciones */
+.transaction-item {
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.transaction-item:hover {
+    transform: translateX(5px);
+}
+
+/* Scroll personalizado */
+#transactionsList::-webkit-scrollbar,
+#contactList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#transactionsList::-webkit-scrollbar-thumb,
+#contactList::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* Animación */
 .card {
     animation: fadeIn 0.5s ease;
 }
@@ -31,16 +67,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Scroll personalizado */
-#transactionsList::-webkit-scrollbar,
-#contactList::-webkit-scrollbar {
-    width: 6px;
-}
-
-#transactionsList::-webkit-scrollbar-thumb,
-#contactList::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
 }

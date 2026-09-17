@@ -1,6 +1,5 @@
 /**
  * sendmoney.js - Funcionalidad de enviar dinero
- * Usando jQuery
  */
 
 $(document).ready(function() {
@@ -50,15 +49,14 @@ $(document).ready(function() {
         $('#contactList').html(html);
     }
 
-    // Mostrar contactos al inicio
     mostrarContactos();
 
-    // Evento: Buscar contacto (autocompletar con jQuery)
+    // Buscar contacto
     $('#searchContact').on('keyup', function() {
         mostrarContactos($(this).val());
     });
 
-    // Evento: Click en botón Enviar de un contacto
+    // Click en Enviar de un contacto
     $(document).on('click', '.enviar-btn', function() {
         const nombre = $(this).data('name');
         $('#transferTarget').text(nombre);
@@ -66,7 +64,7 @@ $(document).ready(function() {
         $('#transferAmount').focus();
     });
 
-    // Evento: Guardar nuevo contacto
+    // Guardar nuevo contacto
     $('#saveContactBtn').on('click', function() {
         const name = $('#contactName').val().trim();
         const cbu = $('#contactCbu').val().trim();
@@ -84,16 +82,15 @@ $(document).ready(function() {
         // Limpiar campos
         $('#contactName, #contactCbu, #contactAlias, #contactBank').val('');
 
-        // Cerrar modal
+        // Cerrar modal (Bootstrap 4 - usa jQuery)
         $('#addContactModal').modal('hide');
 
-        // Actualizar lista
         mostrarContactos();
 
         alert('Contacto agregado: ' + name);
     });
 
-    // Evento: Enviar dinero
+    // Enviar dinero
     $('#sendTransferBtn').on('click', function() {
         const monto = parseFloat($('#transferAmount').val());
         const destinatario = $('#transferTarget').text();
@@ -115,26 +112,33 @@ $(document).ready(function() {
             return;
         }
 
-        // Actualizar saldo
+        // ============================================
+        // ACTUALIZAR SALDO
+        // ============================================
         const nuevoSaldo = saldo - monto;
         localStorage.setItem('walletBalance', nuevoSaldo.toString());
         saldo = nuevoSaldo;
         $('#currentBalance').text('$' + nuevoSaldo.toFixed(2));
 
-        // Registrar transacción
+        // ============================================
+        // REGISTRAR TRANSACCIÓN
+        // ⚠️ IMPORTANTE: usar la misma clave 'transactions'
+        // ============================================
         let transacciones = JSON.parse(localStorage.getItem('transactions')) || [];
+        
         transacciones.unshift({
-            type: 'send',
-            amount: monto,
-            to: destinatario,
-            date: new Date().toLocaleString(),
-            status: 'completado'
+            type: 'send',                             // ← Tipo
+            amount: monto,                            // ← Monto
+            to: destinatario,                         // ← Destinatario
+            date: new Date().toLocaleString(),        // ← Fecha
+            status: 'completado'                      // ← Estado
         });
+        
         localStorage.setItem('transactions', JSON.stringify(transacciones));
 
         alert('Transferencia de $' + monto.toFixed(2) + ' a ' + destinatario + ' realizada');
 
-        // Ocultar área de transferencia
+        // Ocultar área
         $('#transferArea').addClass('d-none');
         $('#transferAmount').val('');
     });
