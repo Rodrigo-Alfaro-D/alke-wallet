@@ -96,6 +96,9 @@ $(document).ready(function() {
 
         $('#emptyMessage').addClass('d-none');
 
+        // Actualizar contador
+        $('#totalMovimientos').text(filtradas.length);
+
         // Generar HTML
         let html = '';
         filtradas.forEach(function(t) {
