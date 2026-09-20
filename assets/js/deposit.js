@@ -20,6 +20,14 @@ $(document).ready(function() {
 
     // Submit del formulario
     $('#depositForm').on('submit', function(event) {
+
+        // Eventos: Montos rápidos
+        $('.quick-amount').on('click', function() {
+            const monto = $(this).data('amount');
+            $('#amount').val(monto);
+            $('#amount').focus();
+        });
+        
         event.preventDefault();
 
         const monto = parseFloat($('#amount').val());
