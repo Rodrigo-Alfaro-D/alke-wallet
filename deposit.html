@@ -29,7 +29,18 @@
                             <input type="number" class="form-control form-control-lg" id="amount" placeholder="0.00" min="0.01" step="0.01" required>
                         </div>
                     </div>
-
+                    <!-- Montos rápidos -->
+                        <div class="mb-3">
+                            <label class="font-weight-bold small text-muted">Montos rápidos</label>
+                            <div class="d-flex flex-wrap">
+                                <button type="button" class="btn btn-outline-success btn-sm mr-2 mb-2 quick-amount" data-amount="10">$10</button>
+                                <button type="button" class="btn btn-outline-success btn-sm mr-2 mb-2 quick-amount" data-amount="25">$25</button>
+                                <button type="button" class="btn btn-outline-success btn-sm mr-2 mb-2 quick-amount" data-amount="50">$50</button>
+                                <button type="button" class="btn btn-outline-success btn-sm mr-2 mb-2 quick-amount" data-amount="100">$100</button>
+                                <button type="button" class="btn btn-outline-success btn-sm mr-2 mb-2 quick-amount" data-amount="500">$500</button>
+                                <button type="button" class="btn btn-outline-success btn-sm mr-2 mb-2 quick-amount" data-amount="1000">$1000</button>
+                            </div>
+                        </div>
                     <button type="submit" class="btn btn-success btn-block btn-lg">Realizar depósito</button>
 
                     <div id="successMessage" class="alert alert-success mt-3 d-none"></div>
